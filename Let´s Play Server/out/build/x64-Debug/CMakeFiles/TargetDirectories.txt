@@ -1,3 +1,0 @@
-C:/Users/mau14/Escritorio/Let's Play Server/Let-s-Play-Server/Let´s Play Server/out/build/x64-Debug/CMakeFiles/CMakeTarget.dir
-C:/Users/mau14/Escritorio/Let's Play Server/Let-s-Play-Server/Let´s Play Server/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/mau14/Escritorio/Let's Play Server/Let-s-Play-Server/Let´s Play Server/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
