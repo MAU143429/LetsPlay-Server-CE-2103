@@ -1,8 +1,8 @@
 #include <iostream>
-
+#include "Socket/Server.h"
 using namespace std;
 
 int main() {
-	cout << "Hello World!";
+	Server::getInstance()->initServer();
 	return 0;
 }
