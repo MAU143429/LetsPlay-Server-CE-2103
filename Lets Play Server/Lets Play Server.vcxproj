@@ -96,6 +96,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,6 +112,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,6 +128,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,6 +144,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,11 +155,50 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Util_JSON\JSON_Management.cpp" />
     <ClCompile Include="src\Socket\Server.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Util_JSON\TypeMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="lib\rapidjson\encodedstream.h" />
+    <ClInclude Include="lib\rapidjson\encodings.h" />
+    <ClInclude Include="lib\rapidjson\error\en.h" />
+    <ClInclude Include="lib\rapidjson\error\error.h" />
+    <ClInclude Include="lib\rapidjson\filereadstream.h" />
+    <ClInclude Include="lib\rapidjson\filewritestream.h" />
+    <ClInclude Include="lib\rapidjson\fwd.h" />
+    <ClInclude Include="lib\rapidjson\internal\biginteger.h" />
+    <ClInclude Include="lib\rapidjson\internal\clzll.h" />
+    <ClInclude Include="lib\rapidjson\internal\diyfp.h" />
+    <ClInclude Include="lib\rapidjson\internal\dtoa.h" />
+    <ClInclude Include="lib\rapidjson\internal\ieee754.h" />
+    <ClInclude Include="lib\rapidjson\internal\itoa.h" />
+    <ClInclude Include="lib\rapidjson\internal\meta.h" />
+    <ClInclude Include="lib\rapidjson\internal\pow10.h" />
+    <ClInclude Include="lib\rapidjson\internal\regex.h" />
+    <ClInclude Include="lib\rapidjson\internal\stack.h" />
+    <ClInclude Include="lib\rapidjson\internal\strfunc.h" />
+    <ClInclude Include="lib\rapidjson\internal\strtod.h" />
+    <ClInclude Include="lib\rapidjson\internal\swap.h" />
+    <ClInclude Include="lib\rapidjson\istreamwrapper.h" />
+    <ClInclude Include="lib\rapidjson\memorybuffer.h" />
+    <ClInclude Include="lib\rapidjson\memorystream.h" />
+    <ClInclude Include="lib\rapidjson\msinttypes\inttypes.h" />
+    <ClInclude Include="lib\rapidjson\msinttypes\stdint.h" />
+    <ClInclude Include="lib\rapidjson\ostreamwrapper.h" />
+    <ClInclude Include="lib\rapidjson\pointer.h" />
+    <ClInclude Include="lib\rapidjson\prettywriter.h" />
+    <ClInclude Include="lib\rapidjson\rapidjson.h" />
+    <ClInclude Include="lib\rapidjson\reader.h" />
+    <ClInclude Include="lib\rapidjson\schema.h" />
+    <ClInclude Include="lib\rapidjson\stream.h" />
+    <ClInclude Include="lib\rapidjson\stringbuffer.h" />
+    <ClInclude Include="lib\rapidjson\writer.h" />
+    <ClInclude Include="src\DataStructures\SimplyList.h" />
+    <ClInclude Include="src\Util_JSON\JSON_Management.h" />
     <ClInclude Include="src\Socket\Server.h" />
+    <ClInclude Include="src\Util_JSON\TypeMessage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
