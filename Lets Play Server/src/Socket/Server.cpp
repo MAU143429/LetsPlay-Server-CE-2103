@@ -1,4 +1,5 @@
 #include "Server.h"
+
 Server* Server::unique_instance{ nullptr };
 mutex Server::mutex_;
 
