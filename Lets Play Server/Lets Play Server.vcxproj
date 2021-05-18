@@ -155,12 +155,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BPGAME\bpgame_server.cpp" />
+    <ClCompile Include="src\DataStructures\Matrix_Utilities.cpp" />
     <ClCompile Include="src\Util_JSON\JSON_Management.cpp" />
     <ClCompile Include="src\Socket\Server.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Util_JSON\TypeMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BPGAME\bpgame_server.h" />
     <ClInclude Include="lib\rapidjson\encodedstream.h" />
     <ClInclude Include="lib\rapidjson\encodings.h" />
     <ClInclude Include="lib\rapidjson\error\en.h" />
@@ -195,6 +198,7 @@
     <ClInclude Include="lib\rapidjson\stream.h" />
     <ClInclude Include="lib\rapidjson\stringbuffer.h" />
     <ClInclude Include="lib\rapidjson\writer.h" />
+    <ClInclude Include="src\DataStructures\Matrix_Utilities.h" />
     <ClInclude Include="src\DataStructures\SimplyList.h" />
     <ClInclude Include="src\Util_JSON\JSON_Management.h" />
     <ClInclude Include="src\Socket\Server.h" />
