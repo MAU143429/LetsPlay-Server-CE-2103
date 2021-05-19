@@ -15,6 +15,7 @@ public:
 
 		Matrix_Utilities::FillMatrix(matriz1);
 		Matrix_Utilities::showMatrix(matriz1);
+		Matrix_Utilities::RandomMatrix(matriz1, 8);
 		cout << "LA MATRIZ SE CREO CON EXITO";
 		                                 
 	 }
