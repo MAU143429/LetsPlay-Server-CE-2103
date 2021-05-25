@@ -30,9 +30,6 @@
     <ClCompile Include="src\BPGAME\bpgame_server.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\DataStructures\Matrix_Utilities.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="src\Socket\Server_Manager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>

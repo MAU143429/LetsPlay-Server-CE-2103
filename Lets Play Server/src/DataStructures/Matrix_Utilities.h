@@ -1,104 +1,78 @@
 #pragma once
 #include <iostream>
 #include <cstdlib>
-
+#include "SimplyList.h"
 
 
 using namespace std;
 
+
+
 class Matrix_Utilities
-{
-    
+{ 
 public:
-       
-   //##################################//
-   /**
-              0 = Empty Space
-              1 = PlayerSpot (Obstacle)
-              2 = Goal Box
-              3 = Hitbox space
-   */
-   //##################################//
+	int matrixRows, matrixColumns;
+    SimplyLinkedList<SimplyLinkedList<int>*>* bpMatrix;
 
-    static void FillMatrix(int M[11][18])
-    {
-        for (int i = 0; i < 11; i++)
-        {
-            
-            for (int j = 0; j < 18; j++)
-            {
-                if (j == 0 and i == 5 or j == 17 and i == 5) {
-                    M[i][j] = 2;
-                }
-                else if (j == 0 or j == 17 and i != 5) {
+	Matrix_Utilities(int lenghtRow, int lenghtColumn) {
 
-                    M[i][j] = 3;
-                }
-                else{
-                    M[i][j] = 0;
-                }
-                
-                
-            }
-            
-        }
+		SimplyLinkedList<int>* newListRow;
+		this->matrixRows = lenghtRow;
+		this->matrixColumns = lenghtColumn;
 
-    }
+		this->bpMatrix = new SimplyLinkedList<SimplyLinkedList<int>*>();
+		
 
-    static void showMatrix(int M[11][18])
-    {
-
-        for (int i = 0; i < 11; i++)
-        {
-            cout << "[";
-            for (int j = 0; j < 18; j++)
-            {
-                if (j == 17) {
-                    cout << M[i][j];
-                }
-                else {
-                    cout << M[i][j] << " , ";
-                }
-                
-            }
-            
-            cout << "]," << endl;
-        }
-
-    }
+		newListRow = createBlankRow(lenghtRow);
 
 
-    static void RandomMatrix(int M[11][18],int players)
-    {
-        // Create a random number of players in right field
-        for (int i = 0; i < players; i++)
-        {
-            int randrow = rand() % (9 - 0 + 1) + 0;
-            int randcol = rand() % (8 - 1 + 1) + 1;
+		for (size_t j = 0; j < lenghtColumn; j++)
+		{
+			bpMatrix->append(newListRow);
 
-            cout << " EL JUGADOR VA APARECER EN LA POSICION   (" << randrow << " , " << randcol << ")" <<endl;
+		}
 
-            /**
-            cout << "[";
-            for (int j = 0; j < 18; j++)
-            {
-                if (j == 17) {
-                    cout << M[i][j];
-                }
-                else {
-                    cout << M[i][j] << " , ";
-                }
+	}
+	SimplyLinkedList<int>* createBlankRow(int lenghtRow) {
+		auto rowList = new SimplyLinkedList<int>();
 
-            }
+		for (size_t i = 0; i < lenghtRow; i++)
+		{
+			rowList->append(0);
+		}
 
-            cout << "]," << endl;
-            */
-        }
+		return rowList;
+	}
+	int getValor(int pos_i, int pos_j) {
+		int result;
 
-        // Create a random number of players in left field
+		for (size_t i = 0; i < matrixRows; i++){
+			for (size_t j = 0; j < matrixColumns; j++){
+				result = bpMatrix->get(i)->get(j);
+			}
+		}
+		return result;
+	}
+	void printMatrix() {
+		if (this->matrixRows == 0 and this->matrixColumns == 0) {
+			cout << "[]" << endl;
+		}
+		else
+		{
+			cout << "[";
+			for (size_t i = 0; i < matrixRows; i++)
+			{
+				for (size_t j = 0; j < matrixColumns; j++)
+				{
+					this->bpMatrix->get(i)->show();
+				}
+			}
+			cout << "]" << endl;
+		}
+	}
 
+	
 
-    }
 
 };
 

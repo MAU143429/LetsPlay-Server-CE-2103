@@ -7,20 +7,5 @@ using namespace std;
 class  bpgame_server
 {
 	
-public:
-
-	 static void Create_Matrix() {
-			
-		 int matriz1[11][18];
-
-		Matrix_Utilities::FillMatrix(matriz1);
-		Matrix_Utilities::showMatrix(matriz1);
-		Matrix_Utilities::RandomMatrix(matriz1, 8);
-		cout << "LA MATRIZ SE CREO CON EXITO";
-		                                 
-	 }
-
-	
-
 };
 

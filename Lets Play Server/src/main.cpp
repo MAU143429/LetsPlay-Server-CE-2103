@@ -1,16 +1,14 @@
 #include <iostream>
 #include "Socket/Server.h"
 #include "BPGAME/bpgame_server.h" 
+#include "DataStructures/Matrix_Utilities.h"
 using namespace std;
 
 int main() {
 	//Server::getInstance()->initServer();
-	bpgame_server::Create_Matrix();
-	int randrow = rand() % 10 + 1;
-	int randcol = rand() % 10 + 1;
-	
+	auto matrix = new Matrix_Utilities(2, 1);
+	matrix->printMatrix();
 
-	cout << " randrow: " << randrow << " y el randcollel : " << randcol <<  endl;
 
 	return 0;
 }
