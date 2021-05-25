@@ -155,18 +155,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\DataStructures\bp_Box.cpp" />
+    <ClCompile Include="src\BPGAME\BP_Controller.cpp" />
     <ClCompile Include="src\GPPUZZLE\gpuzzle_server.cpp" />
     <ClCompile Include="src\Socket\Server_Manager.cpp" />
-    <ClCompile Include="src\BPGAME\bpgame_server.cpp" />
     <ClCompile Include="src\Util_JSON\JSON_Management.cpp" />
     <ClCompile Include="src\Socket\Server.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Util_JSON\TypeMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\DataStructures\bp_Box.h" />
+    <ClInclude Include="src\BPGAME\BP_Controller.h" />
     <ClInclude Include="src\GPPUZZLE\gpuzzle_server.h" />
     <ClInclude Include="src\Socket\Server_Manager.h" />
-    <ClInclude Include="src\BPGAME\bpgame_server.h" />
     <ClInclude Include="lib\rapidjson\encodedstream.h" />
     <ClInclude Include="lib\rapidjson\encodings.h" />
     <ClInclude Include="lib\rapidjson\error\en.h" />
@@ -201,7 +203,7 @@
     <ClInclude Include="lib\rapidjson\stream.h" />
     <ClInclude Include="lib\rapidjson\stringbuffer.h" />
     <ClInclude Include="lib\rapidjson\writer.h" />
-    <ClInclude Include="src\DataStructures\Matrix_Utilities.h" />
+    <ClInclude Include="src\DataStructures\Matrix_bp.h" />
     <ClInclude Include="src\DataStructures\SimplyList.h" />
     <ClInclude Include="src\Util_JSON\JSON_Management.h" />
     <ClInclude Include="src\Socket\Server.h" />

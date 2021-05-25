@@ -27,13 +27,16 @@
     <ClCompile Include="src\Util_JSON\JSON_Management.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\BPGAME\bpgame_server.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="src\Socket\Server_Manager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\GPPUZZLE\gpuzzle_server.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BPGAME\BP_Controller.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataStructures\bp_Box.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -152,16 +155,19 @@
     <ClInclude Include="lib\rapidjson\error\error.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\BPGAME\bpgame_server.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DataStructures\Matrix_Utilities.h">
+    <ClInclude Include="src\DataStructures\Matrix_bp.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\Socket\Server_Manager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\GPPUZZLE\gpuzzle_server.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BPGAME\BP_Controller.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataStructures\bp_Box.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
