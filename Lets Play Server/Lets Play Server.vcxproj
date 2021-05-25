@@ -157,7 +157,6 @@
   <ItemGroup>
     <ClCompile Include="src\Socket\Server_Manager.cpp" />
     <ClCompile Include="src\BPGAME\bpgame_server.cpp" />
-    <ClCompile Include="src\DataStructures\Matrix_Utilities.cpp" />
     <ClCompile Include="src\Util_JSON\JSON_Management.cpp" />
     <ClCompile Include="src\Socket\Server.cpp" />
     <ClCompile Include="src\main.cpp" />
