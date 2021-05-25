@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GPPUZZLE\gpuzzle_server.cpp" />
     <ClCompile Include="src\Socket\Server_Manager.cpp" />
     <ClCompile Include="src\BPGAME\bpgame_server.cpp" />
     <ClCompile Include="src\DataStructures\Matrix_Utilities.cpp" />
@@ -164,6 +165,7 @@
     <ClCompile Include="src\Util_JSON\TypeMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GPPUZZLE\gpuzzle_server.h" />
     <ClInclude Include="src\Socket\Server_Manager.h" />
     <ClInclude Include="src\BPGAME\bpgame_server.h" />
     <ClInclude Include="lib\rapidjson\encodedstream.h" />
