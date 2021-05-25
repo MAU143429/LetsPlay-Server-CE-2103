@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 	//Server::getInstance()->initServer();
-	auto matrix = new Matrix_Utilities(2, 1);
+	auto matrix = new Matrix_Utilities(5, 5);
 	matrix->printMatrix();
 
 

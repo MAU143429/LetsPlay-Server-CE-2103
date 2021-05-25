@@ -23,20 +23,21 @@ public:
 		this->bpMatrix = new SimplyLinkedList<SimplyLinkedList<int>*>();
 		
 
-		newListRow = createBlankRow(lenghtRow);
+		newListRow = createBlankRow(lenghtColumn);
+		
 
 
-		for (size_t j = 0; j < lenghtColumn; j++)
+		for (size_t i = 0; i < lenghtRow; i++)
 		{
 			bpMatrix->append(newListRow);
 
 		}
 
 	}
-	SimplyLinkedList<int>* createBlankRow(int lenghtRow) {
+	SimplyLinkedList<int>* createBlankRow(int lenght) {
 		auto rowList = new SimplyLinkedList<int>();
 
-		for (size_t i = 0; i < lenghtRow; i++)
+		for (size_t i = 0; i < lenght; i++)
 		{
 			rowList->append(0);
 		}
@@ -59,13 +60,12 @@ public:
 		}
 		else
 		{
-			cout << "[";
+			cout << "[" << endl;
 			for (size_t i = 0; i < matrixRows; i++)
 			{
-				for (size_t j = 0; j < matrixColumns; j++)
-				{
-					this->bpMatrix->get(i)->show();
-				}
+				this->bpMatrix->get(i)->show();
+				
+				
 			}
 			cout << "]" << endl;
 		}
