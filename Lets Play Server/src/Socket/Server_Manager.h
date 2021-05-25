@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include "../Util_JSON/JSON_Management.h"
-#include "../BPGAME/bpgame_server.h"
+#include "../BPGAME/BP_Controller.h"
 
 class Server_Manager
 {
@@ -15,7 +15,7 @@ public:
 
 		if (game == "BPGAME") {
 
-			// Llamar a funcion controladora del bp game
+			BP_Controller::Init_BP();
 		}
 		else if (game == "GPUZZLE") {
 
