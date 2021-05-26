@@ -25,13 +25,9 @@ public:
 
 		this->bpMatrix = new SimplyLinkedList<SimplyLinkedList<bp_Box*>*>();
 		
-
-		newListRow = createBlankRow(lenghtColumn);
-		
-		
-
 		for (size_t i = 0; i < lenghtRow; i++)
 		{
+			newListRow = createBlankRow(lenghtColumn);
 			bpMatrix->append(newListRow);
 
 		}
@@ -42,7 +38,6 @@ public:
 	SimplyLinkedList<bp_Box*>* createBlankRow(int lenght) {
 		auto rowList = new SimplyLinkedList<bp_Box*>();
 		
-
 		for (size_t i = 0; i < lenght; i++)
 		{
 			auto box = new bp_Box();
@@ -123,6 +118,7 @@ public:
 		int cont = 1;
 
 		for (size_t i = 0; i < matrixRows; i++) {
+
 
 			for (size_t j = 0; j < matrixColumns; j++) {
 				
