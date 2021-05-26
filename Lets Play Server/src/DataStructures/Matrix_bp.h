@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "SimplyList.h"
 #include "bp_Box.h"
+#include "Random_Box.h"
 
 
 using namespace std;
@@ -24,24 +25,22 @@ public:
 
 		this->bpMatrix = new SimplyLinkedList<SimplyLinkedList<bp_Box*>*>();
 		
-
-		newListRow = createBlankRow(lenghtColumn);
-		
-
-
 		for (size_t i = 0; i < lenghtRow; i++)
 		{
+			newListRow = createBlankRow(lenghtColumn);
 			bpMatrix->append(newListRow);
 
 		}
+		
+		
 
 	}
 	SimplyLinkedList<bp_Box*>* createBlankRow(int lenght) {
 		auto rowList = new SimplyLinkedList<bp_Box*>();
-		auto box = new bp_Box();
-
+		
 		for (size_t i = 0; i < lenght; i++)
 		{
+			auto box = new bp_Box();
 			rowList->append(box);
 		}
 
@@ -88,11 +87,38 @@ public:
 		}
 	}
 
+
+	void printMatrixName() {
+		if (this->matrixRows == 0 and this->matrixColumns == 0) {
+			cout << "[]" << endl;
+		}
+		else
+		{
+			cout << "[ " << endl;
+			for (size_t i = 0; i < matrixRows; i++)
+			{
+				for (size_t j = 0; j < matrixColumns; j++) {
+					if (j == matrixColumns - 1) {
+						cout << bpMatrix->get(i)->get(j)->getName() << " ] ";
+					}
+					else if (j == 0) {
+						cout << " [ " << bpMatrix->get(i)->get(j)->getName() << " , ";
+					}
+					else {
+						cout << bpMatrix->get(i)->get(j)->getName() << " , ";
+					}
+				}
+				cout << endl;
+			}
+			cout << " ]" << endl;
+		}
+	}
 	void fill_Matrix() {
 
 		int cont = 1;
 
 		for (size_t i = 0; i < matrixRows; i++) {
+
 
 			for (size_t j = 0; j < matrixColumns; j++) {
 				
@@ -100,8 +126,20 @@ public:
 				bpMatrix->get(i)->get(j)->setPosx(i);
 				bpMatrix->get(i)->get(j)->setPosy(j);
 				cont++;
+				cout << cont;
 			}
 		}
 	}
+
+	SimplyLinkedList<Random_Box*> generate_Random(int players) {
+
+		
+
+	}
+
+
+
+
+
 };
 
