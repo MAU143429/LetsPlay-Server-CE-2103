@@ -24,9 +24,6 @@
     <ClCompile Include="src\Util_JSON\TypeMessage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\Util_JSON\JSON_Management.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="src\Socket\Server_Manager.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
