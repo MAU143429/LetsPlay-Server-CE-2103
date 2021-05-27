@@ -8,9 +8,7 @@ using namespace std;
 
 int main() {
 	//Server::getInstance()->initServer();
-	BP_Controller::Init_BP("16");
-	
-
+	BP_Controller::Init_BP("12");
 	return 0;
 }
 

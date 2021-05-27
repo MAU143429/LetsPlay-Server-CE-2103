@@ -6,12 +6,13 @@
 
 using namespace std;
 
+static Matrix_bp* bp_matrix;
 class BP_Controller
 {
 
-public: 
- 
-	static void generate_Random(int players) {
+public:
+
+	static SimplyLinkedList<Random_Box*>* generate_Random(int players) {
 
 		int half = players / 2;
 		int totalleft = 0;
@@ -76,12 +77,7 @@ public:
 			}
 		}
 
-		cout << "[ ";
-		for (size_t i = 0; i < player_positions->getLen(); i++)
-		{
-			cout << "( " << player_positions->get(i)->getPosx() << ", " << player_positions->get(i)->getPosy() << " )" ;
-		}
-		cout << " ] ";
+		return player_positions;
 	}
 
 	static int random_row(int min,int max) {
@@ -93,16 +89,30 @@ public:
 		int randcol1 = rand() % (max - min + 1) + min;
 		return randcol1;
 	}
+
+	static void Pin_up(SimplyLinkedList<Random_Box*>* p_locations) {
+		
+		for (size_t i = 0; i < p_locations->getLen(); i++)
+		{
+			int varx = p_locations->get(i)->getPosx();
+			int vary = p_locations->get(i)->getPosy();
+			bp_matrix->setValue(varx, vary, 1);
+
+		}
+
+	}
 	
 	static void Init_BP(const char *totalplayers) {
 		int total_players = atoi(totalplayers);
-		static auto bp_matrix = new Matrix_bp(11, 16);
+		static int rows = 11;
+		static int column = 16;
+		bp_matrix = new Matrix_bp(rows, column);
 		bp_matrix->printMatrix();
 		bp_matrix->fill_Matrix();
-		bp_matrix->printMatrixName();
-		
-		generate_Random(12);
-		
+		SimplyLinkedList<Random_Box*>* newplayers_location = generate_Random(total_players);
+		Pin_up(newplayers_location);
+		bp_matrix->printMatrix();
+
 	}
 
 };
