@@ -160,7 +160,6 @@
     <ClCompile Include="src\BPGAME\BP_Controller.cpp" />
     <ClCompile Include="src\GPPUZZLE\gpuzzle_server.cpp" />
     <ClCompile Include="src\Socket\Server_Manager.cpp" />
-    <ClCompile Include="src\Util_JSON\JSON_Management.cpp" />
     <ClCompile Include="src\Socket\Server.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Util_JSON\TypeMessage.cpp" />
