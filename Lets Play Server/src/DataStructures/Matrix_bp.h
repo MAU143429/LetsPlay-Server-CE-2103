@@ -126,20 +126,11 @@ public:
 				bpMatrix->get(i)->get(j)->setPosx(i);
 				bpMatrix->get(i)->get(j)->setPosy(j);
 				cont++;
-				cout << cont;
+				
 			}
 		}
 	}
 
-	SimplyLinkedList<Random_Box*> generate_Random(int players) {
-
-		
-
-	}
-
-
-
-
-
+	
 };
 
