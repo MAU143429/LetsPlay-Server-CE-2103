@@ -1,16 +1,15 @@
 #include <iostream>
 #include "Socket/Server.h"
 #include "DataStructures/Matrix_bp.h"
+#include"BPGAME/BP_Controller.h"
+#include "DataStructures/SimplyList.h"
+
 using namespace std;
 
 int main() {
 	//Server::getInstance()->initServer();
-	auto matrix = new Matrix_bp(5, 5);
-	matrix->printMatrix();
-	matrix->fill_Matrix();
-	matrix->printMatrix();
+	BP_Controller::Init_BP("16");
 	
-
 
 	return 0;
 }
