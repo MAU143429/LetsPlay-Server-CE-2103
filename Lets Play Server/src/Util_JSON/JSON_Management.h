@@ -6,6 +6,7 @@
 #include "../../lib/rapidjson/document.h"
 #include "../DataStructures/SimplyList.h"
 #include "../DataStructures/Random_Box.h"
+#include "TypeMessage.h"
 #include <string>
 
 
@@ -37,8 +38,41 @@ public:
 
         }
     }
+    /*
+    * @brief Method that serializes a TypeMessage.h method to a JSON string
+    * @param typemessageObject is the TypeMessage.h object that contains all the information 
+    * @return the serialized object into a JSON string 
+    */
+    static string TypeMessageToJSON(TypeMessage* typemessageObject) {
+        Document json_document;
+        StringBuffer stringbuffer;
+        SimplyLinkedList<Random_Box*> *jsonPlayerList = typemessageObject->getPlayerlist();
+        int list_lenght = typemessageObject->getPlayerlist()->getLen();
 
+        json_document.SetArray();
+        Document::AllocatorType& allocator = json_document.GetAllocator();
 
+        Writer<rapidjson::StringBuffer> writer(stringbuffer);
+
+        writer.StartObject();
+
+        writer.Key("Game");
+        writer.String(typemessageObject->getGame().c_str());
+        writer.Key("Gamemode");
+        writer.String(typemessageObject->getGamemode().c_str());
+
+        writer.Key("Playerlist");
+        writer.StartArray();
+        for (size_t i = 0; i < list_lenght; i++)
+        {
+            Random_Box* object = jsonPlayerList->get(i);
+            SerializeRandomBoxToJSON(&writer, object);
+        }
+        writer.EndArray();
+        writer.EndObject();
+
+        return stringbuffer.GetString();
+    }
     /*
     * @brief Method that serializes a singly list that contains Random_Box objects to a JSON array 
     * @param boxList the list that contains the Random_box objects
@@ -46,13 +80,13 @@ public:
     */
     static string PosObjectListToJSON(SimplyLinkedList<Random_Box*>* boxList) {
         Document json_document;
-        StringBuffer strbuf;
+        StringBuffer stringbuffer;
         int cont = 0;
 
         json_document.SetArray();
         Document::AllocatorType& allocator = json_document.GetAllocator();
 
-        Writer<rapidjson::StringBuffer> writer(strbuf);
+        Writer<rapidjson::StringBuffer> writer(stringbuffer);
 
         writer.StartArray();
         while (cont < boxList->getLen())
@@ -62,8 +96,9 @@ public:
             cont++;
         }
         writer.EndArray();
+        
 
-        return strbuf.GetString();
+        return stringbuffer.GetString();
    
     }
 
@@ -73,10 +108,9 @@ public:
     */
     static void SerializeRandomBoxToJSON(rapidjson::Writer<rapidjson::StringBuffer> *writer, Random_Box* boxObject){
         writer->StartObject();
-
-        writer->String("posx");
+        writer->Key("posx");
         writer->Int(boxObject->getPosx());
-        writer->String("posy");
+        writer->Key("posy");
         writer->Int(boxObject->getPosy());
 
         writer->EndObject();
