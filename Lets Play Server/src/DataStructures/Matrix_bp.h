@@ -47,7 +47,7 @@ public:
 		return rowList;
 	}
 
-	int getValor(int pos_i, int pos_j) {
+	int getValue(int pos_i, int pos_j) {
 		int result;
 
 		for (size_t i = 0; i < matrixRows; i++){
@@ -60,6 +60,20 @@ public:
 			}
 		}
 		cout<<"VALOR NO ENCONTRADO"<<endl; 
+	}
+
+	void setValue(int pos_i, int pos_j, int value) {
+
+		for (size_t i = 0; i < matrixRows; i++) {
+
+			if (i == pos_i) {
+				for (size_t j = 0; j < matrixColumns; j++) {
+					if (j == pos_j) {
+						bpMatrix->get(i)->get(j)->setValue(value);
+					}
+				}
+			}
+		}
 	}
 	void printMatrix() {
 		if (this->matrixRows == 0 and this->matrixColumns == 0) {
