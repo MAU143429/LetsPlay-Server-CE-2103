@@ -28,7 +28,7 @@ public:
 
 			if (JSON_Management::GetJSONString("Initmode", jsonString) == "TRUE"){
 
-				BP_Controller::Init_BP(players.c_str());
+				BP_Controller::getInstance()->Init_BP(players.c_str());
 				
 				
 			}
@@ -41,6 +41,8 @@ public:
 				if (currentplayer == "1") {
 					goal->setPosx(5);
 					goal->setPosy(15);
+
+
 
 					aStar::aStarSearch(currentpos,goal,currentplayer);
 					

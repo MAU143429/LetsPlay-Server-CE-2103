@@ -29,22 +29,22 @@ public:
 	};
 
 	
-	bool isValid(int row, int col)
+	static bool isValid(int row, int col)
 	{
 		return (row >= 0) && (row < ROW) &&
 			(col >= 0) && (col < COL);
 	}
 	
-	bool isUnBlocked(int row, int col)
+	static bool isUnBlocked(int row, int col)
 	{
 		// LLAMAR AL BP_MATRIX (SINGLETON)
-		if ( bp_matrix.get(row).get(col).getValue() == 0)
+		if (BP_Controller::getInstance()->getMatrix()->get(row)->get(col)->getValue() == 0)
 			return (true);
 		else
 			return (false);
 	}
 
-	bool isGoal(int row, int col)
+	static bool isGoal(int row, int col)
 	{
 		if (row == 5 && col == 0 || row == 5 && col == 15)
 			return (true);
@@ -53,7 +53,7 @@ public:
 	}
 
 	
-	double calc_Hvalue(int row,int col, string currentplayer)
+	static double calc_Hvalue(int row,int col, string currentplayer)
 	{
 		if (currentplayer == "1") {
 			return (double)abs(row - 5) + abs(15 - col);
@@ -64,7 +64,7 @@ public:
 		
 	}
 
-	void tracePath(cell cellDetails[][COL], string currentplayer) {
+	static void tracePath(cell cellDetails[][COL], string currentplayer) {
 
 		int row, col;
 
@@ -113,7 +113,7 @@ public:
 
 	}
 	
-	 void aStarSearch(bp_Box *currentcell, bp_Box *goal, string currplayers ) {
+	static void aStarSearch(bp_Box *currentcell, bp_Box *goal, string currplayers ) {
 
 		// If the cell is out of range 
 		if (isValid(currentcell->getPosx(), currentcell->getPosy()) == false)
