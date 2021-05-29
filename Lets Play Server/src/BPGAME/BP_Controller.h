@@ -3,6 +3,7 @@
 #include <iostream>
 #include "../Util_JSON/JSON_Management.h"
 #include "../DataStructures/Matrix_bp.h"
+#include "../Algorithm/aStar.h"
 
 using namespace std;
 
@@ -112,6 +113,12 @@ public:
 		SimplyLinkedList<Random_Box*>* newplayers_location = generate_Random(total_players);
 		Pin_up(newplayers_location);
 		bp_matrix->printMatrix();
+		bp_matrix->printMatrixName();
+
+	}
+	static void Astar_path(string currplayer) {
+
+		
 
 	}
 
