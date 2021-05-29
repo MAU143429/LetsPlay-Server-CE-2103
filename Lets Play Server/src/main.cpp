@@ -3,7 +3,8 @@
 #include "DataStructures/Matrix_bp.h"
 #include"BPGAME/BP_Controller.h"
 #include "DataStructures/SimplyList.h"
-
+#include "DataStructures/Random_Box.h"
+#include "Util_JSON/TypeMessage.h"
 using namespace std;
 
 void RunServer() {

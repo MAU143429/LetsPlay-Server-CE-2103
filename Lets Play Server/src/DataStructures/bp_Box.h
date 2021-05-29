@@ -11,7 +11,8 @@ public:
     double h, f, g;
     bp_Box() {
         
-        this->value = 0;
+        this->name = 0;
+
     }
     
     const int& getParentx() const {

@@ -30,7 +30,7 @@ public:
 			pos->setPosy(random_col(0,7));
 
 			if (player_positions->getLen() != 0) {
-				for (size_t i = 0; i < player_positions->getLen(); i++)
+				for (int i = 0; i < player_positions->getLen(); i++)
 				{
 					if (player_positions->get(i)->getPosx() == pos->getPosx() and player_positions->get(i)->getPosy() == pos->getPosy()) {
 						exist = true;
@@ -58,7 +58,7 @@ public:
 			pos1->setPosy(random_col(8,15));
 
 			if (player_positions->getLen() != 0) {
-				for (size_t i = 0; i < player_positions->getLen(); i++)
+				for (int i = 0; i < player_positions->getLen(); i++)
 				{
 					if (player_positions->get(i)->getPosx() == pos1->getPosx() and player_positions->get(i)->getPosy() == pos1->getPosy()) {
 						exist2 = true;
@@ -93,7 +93,7 @@ public:
 
 	static void Pin_up(SimplyLinkedList<Random_Box*>* p_locations) {
 		
-		for (size_t i = 0; i < p_locations->getLen(); i++)
+		for (int i = 0; i < p_locations->getLen(); i++)
 		{
 			int varx = p_locations->get(i)->getPosx();
 			int vary = p_locations->get(i)->getPosy();
