@@ -6,9 +6,14 @@
 
 using namespace std;
 
+void RunServer() {
+	cout << "Server is running" << endl;
+	Server::getInstance()->initServer();
+}
+
 int main() {
-	//Server::getInstance()->initServer();
-	BP_Controller::Init_BP("12");
+	thread runs(RunServer);
+	runs.join();
 	return 0;
 }
 

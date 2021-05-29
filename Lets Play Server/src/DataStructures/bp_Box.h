@@ -7,12 +7,30 @@ class bp_Box
 {
 
 public:
-    int name, posx, posy, h_left, h_right, path_left, path_right, g_left, g_right, value;
+    int name,parent_x,parent_y, posx, posy,value;
+    double h, f, g;
     bp_Box() {
         
         this->value = 0;
     }
     
+    const int& getParentx() const {
+        return parent_x;
+    }
+
+    void setParentx(const int& newpx) {
+        parent_x = newpx;
+
+    }
+
+    const int& getParenty() const {
+        return parent_y;
+    }
+
+    void setParenty(const int& newpy) {
+        parent_y = newpy;
+
+    }
 
     const int& getValue() const {
         return value;
@@ -46,52 +64,29 @@ public:
         posy = newposy;
     }
 
-    const int& geth_left() const {
-        return h_left;
+    const double& get_h() const {
+        return h;
     }
 
-    void seth_left(const int& newh_left) {
-        h_left = newh_left;
+    void set_h(const double& new_h) {
+        h = new_h;
     }
 
-    const int& geth_right() const {
-        return h_right;
+    const double& get_f() const {
+        return f;
     }
 
-    void seth_right(const int& newh_right) {
-        h_right = newh_right;
+    void set_f(const double& new_f) {
+        f = new_f;
     }
 
-    const int& getpath_left() const {
-        return path_left;
+    const double& get_g() const {
+        return g;
     }
 
-    void setpath_left(const int& newpath_left) {
-        path_left = newpath_left;
+    void set_g(const double& new_g) {
+        g = new_g;
     }
 
-    const int& getpath_right() const {
-        return path_right;
-    }
-
-    void setpath_right(const int& newpath_right) {
-        path_right = newpath_right;
-    }
-
-    const int& getg_left() const {
-        return g_left;
-    }
-
-    void setg_left(const int& newg_left) {
-        g_left = newg_left;
-    }
-
-    const int& getg_right() const {
-        return g_right;
-    }
-
-    void setg_right(const int& newg_right) {
-        g_right = newg_right;
-    }
 };
 

@@ -139,6 +139,8 @@ public:
 				bpMatrix->get(i)->get(j)->setName(cont);
 				bpMatrix->get(i)->get(j)->setPosx(i);
 				bpMatrix->get(i)->get(j)->setPosy(j);
+				bpMatrix->get(i)->get(j)->setParentx(-1);
+				bpMatrix->get(i)->get(j)->setParenty(-1);
 				cont++;
 				
 			}
