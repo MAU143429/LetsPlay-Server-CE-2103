@@ -38,7 +38,7 @@ public:
 	SimplyLinkedList<bp_Box*>* createBlankRow(int lenght) {
 		auto rowList = new SimplyLinkedList<bp_Box*>();
 		
-		for (size_t i = 0; i < lenght; i++)
+		for (int i = 0; i < lenght; i++)
 		{
 			auto box = new bp_Box();
 			rowList->append(box);
@@ -50,10 +50,10 @@ public:
 	int getValue(int pos_i, int pos_j) {
 		int result;
 
-		for (size_t i = 0; i < matrixRows; i++){
+		for (int i = 0; i < matrixRows; i++){
 
 			if (i == pos_i) {
-				for (size_t j = 0; j < matrixColumns; j++) {
+				for (int j = 0; j < matrixColumns; j++) {
 					result = bpMatrix->get(i)->get(j)->getValue();
 					return result;
 				}
@@ -64,10 +64,10 @@ public:
 
 	void setValue(int pos_i, int pos_j, int value) {
 
-		for (size_t i = 0; i < matrixRows; i++) {
+		for (int i = 0; i < matrixRows; i++) {
 
 			if (i == pos_i) {
-				for (size_t j = 0; j < matrixColumns; j++) {
+				for (int j = 0; j < matrixColumns; j++) {
 					if (j == pos_j) {
 						bpMatrix->get(i)->get(j)->setValue(value);
 					}
@@ -82,9 +82,9 @@ public:
 		else
 		{
 			cout << "[ " << endl;
-			for (size_t i = 0; i < matrixRows; i++)
+			for (int i = 0; i < matrixRows; i++)
 			{
-				for (size_t j = 0; j < matrixColumns; j++) {
+				for (int j = 0; j < matrixColumns; j++) {
 					if (j == matrixColumns - 1) {
 						cout << bpMatrix->get(i)->get(j)->getValue() << " ] ";
 					}
@@ -109,9 +109,9 @@ public:
 		else
 		{
 			cout << "[ " << endl;
-			for (size_t i = 0; i < matrixRows; i++)
+			for (int i = 0; i < matrixRows; i++)
 			{
-				for (size_t j = 0; j < matrixColumns; j++) {
+				for (int j = 0; j < matrixColumns; j++) {
 					if (j == matrixColumns - 1) {
 						cout << bpMatrix->get(i)->get(j)->getName() << " ] ";
 					}
@@ -131,10 +131,10 @@ public:
 
 		int cont = 1;
 
-		for (size_t i = 0; i < matrixRows; i++) {
+		for (int i = 0; i < matrixRows; i++) {
 
 
-			for (size_t j = 0; j < matrixColumns; j++) {
+			for (int j = 0; j < matrixColumns; j++) {
 				
 				bpMatrix->get(i)->get(j)->setName(cont);
 				bpMatrix->get(i)->get(j)->setPosx(i);

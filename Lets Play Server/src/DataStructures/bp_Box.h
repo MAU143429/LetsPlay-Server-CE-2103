@@ -10,7 +10,8 @@ public:
     int name, posx, posy, h_left, h_right, path_left, path_right, g_left, g_right, value;
     bp_Box() {
         
-        this->value = 0;
+        this->name = 0;
+
     }
     
 

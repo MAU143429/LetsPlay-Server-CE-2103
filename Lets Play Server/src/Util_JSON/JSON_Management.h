@@ -29,12 +29,12 @@ public:
         if (document.HasMember(key.c_str())) {
             if (document[key.c_str()].IsString()) {
                 searchedString = document[key.c_str()].GetString();
-
+                return searchedString;
             }
-            return searchedString;
         }
         else {
             cout << "ERROR : KEY NOT FOUND" << endl;
+            return " ";
 
         }
     }
@@ -60,10 +60,21 @@ public:
         writer.String(typemessageObject->getGame().c_str());
         writer.Key("Gamemode");
         writer.String(typemessageObject->getGamemode().c_str());
+        writer.Key("Player");
+        writer.String(typemessageObject->getPlayer().c_str());
+        writer.Key("Totalplayers");
+        writer.String(typemessageObject->getTotalplayers().c_str());
+        writer.Key("Currentposx");
+        writer.String(typemessageObject->getCurrentposx().c_str());
+        writer.Key("Currentposy");
+        writer.String(typemessageObject->getCurrentposy().c_str());
+        writer.Key("Initmode");
+        writer.String(typemessageObject->getInitmode().c_str());
+        
 
         writer.Key("Playerlist");
         writer.StartArray();
-        for (size_t i = 0; i < list_lenght; i++)
+        for (int i = 0; i < list_lenght; i++)
         {
             Random_Box* object = jsonPlayerList->get(i);
             SerializeRandomBoxToJSON(&writer, object);
