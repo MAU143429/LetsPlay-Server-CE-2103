@@ -1,4 +1,5 @@
 #include "Server.h"
+#include "Server_Manager.h"
 
 Server* Server::unique_instance{ nullptr };
 mutex Server::mutex_;
@@ -52,7 +53,7 @@ void Server::initServer()
 	sockaddr_in client;
 	int clientSize = sizeof(client);
 
-	SOCKET clientSocket = accept(listening, (sockaddr*)&client, &clientSize);
+	clientSocket = accept(listening, (sockaddr*)&client, &clientSize);
 
 	char host[NI_MAXHOST];		// Client's remote name
 	char service[NI_MAXSERV];	// Service (i.e. port) the client is connect on
@@ -95,10 +96,12 @@ void Server::initServer()
 			break;
 		}
 
-		cout << string(buf, 0, bytesReceived) << endl;
+		client_message = string(buf, 0, bytesReceived);
+		if (!client_message.empty()) {
+			const string& response = Server_Manager::Select_GameController(client_message);
+			Send(response.c_str());
 
-		// Echo message back to client
-		send(clientSocket, buf, bytesReceived + 1, 0);
+		}
 
 	}
 
@@ -109,4 +112,20 @@ void Server::initServer()
 	WSACleanup();
 
 	system("pause");
+
+}
+	/**
+	 * @brief Sends a message to the client.
+	 * @param msg const char pointer containing the message.
+	 */
+void Server::Send(const char* msg) {
+	int sendRes = send(clientSocket, msg, strlen(msg), 0);
+	if (sendRes == -1) {
+		std::cout << "Send message failed" << std::endl;
+	}
+}
+
+string Server::ReadString()
+{
+	return client_message;
 }
