@@ -4,24 +4,25 @@
 #include "../BPGAME/BP_Controller.h"
 #include "../DataStructures/bp_Box.h"
 #include "../DataStructures/SimplyList.h"
+#include "../DataStructures/Matrix_bp.h"
 #include <stack>
 
-#define ROW 15 
-#define COL 10 
+#define ROW 11 
+#define COL 16 
 
 using namespace std;
 
-SimplyLinkedList<bp_Box*> *routeList = new SimplyLinkedList<bp_Box*>();
-
+static SimplyLinkedList<bp_Box*>* routeList = new SimplyLinkedList<bp_Box*>();
 
 class aStar
 {
 
 public: 
-
 	typedef pair<int, int> Pair;
 	typedef pair<double, pair<int, int>> pPair;
+	
 
+	
 	struct cell
 	{
 		int parent_i, parent_j;
@@ -29,22 +30,24 @@ public:
 	};
 
 	
-	bool isValid(int row, int col)
+	static bool isValid(int row, int col)
 	{
 		return (row >= 0) && (row < ROW) &&
 			(col >= 0) && (col < COL);
 	}
 	
-	bool isUnBlocked(int row, int col)
+	static bool isUnBlocked(int row, int col)
 	{
-		// LLAMAR AL BP_MATRIX (SINGLETON)
-		if ( bp_matrix.get(row).get(col).getValue() == 0)
+		
+		if (BP_Controller::getInstance()->getMatrix()->get(row)->get(col)->getValue() == 0)
 			return (true);
 		else
 			return (false);
+	
+		
 	}
 
-	bool isGoal(int row, int col)
+	static bool isGoal(int row, int col)
 	{
 		if (row == 5 && col == 0 || row == 5 && col == 15)
 			return (true);
@@ -53,7 +56,7 @@ public:
 	}
 
 	
-	double calc_Hvalue(int row,int col, string currentplayer)
+	static double calc_Hvalue(int row,int col, string currentplayer)
 	{
 		if (currentplayer == "1") {
 			return (double)abs(row - 5) + abs(15 - col);
@@ -64,7 +67,7 @@ public:
 		
 	}
 
-	void tracePath(cell cellDetails[][COL], string currentplayer) {
+	static void tracePath(cell cellDetails[][COL], string currentplayer) {
 
 		int row, col;
 
@@ -77,35 +80,32 @@ public:
 			col = 0;
 		}
 
-		stack<bp_Box*> *Path;
+		stack<Pair> Path;
 
 		while (!(cellDetails[row][col].parent_i== row
 			&& cellDetails[row][col].parent_j == col))
 		{
-			auto newNode = new bp_Box();
-			newNode->setPosx(row);
-			newNode->setPosy(col);
-			Path->push(newNode);
+			Path.push(make_pair(row, col));
 			int temp_row = cellDetails[row][col].parent_i;
 			int temp_col = cellDetails[row][col].parent_j;
 			row = temp_row;
 			col = temp_col;
 		}
 
-		auto newNode1 = new bp_Box();
-		newNode1->setPosx(row);
-		newNode1->setPosy(col);
-		Path->push(newNode1);
+		Path.push(make_pair(row, col));
 
-		while (!Path->empty())
+		while (!Path.empty())
 		{
+
+			pair<int, int> p = Path.top();
+			Path.pop();
+
 			auto bp_pop = new bp_Box();
-			bp_pop = Path->top();
-
-			Path->pop();
-
+			bp_pop->setPosx(p.first);
+			bp_pop->setPosy(p.second);
 
 			routeList->append(bp_pop);
+			
 
 		}
 
@@ -113,7 +113,7 @@ public:
 
 	}
 	
-	 void aStarSearch(bp_Box *currentcell, bp_Box *goal, string currplayers ) {
+	static void aStarSearch(bp_Box *currentcell, bp_Box *goal, string currplayers ) {
 
 		// If the cell is out of range 
 		if (isValid(currentcell->getPosx(), currentcell->getPosy()) == false)
@@ -483,16 +483,16 @@ public:
 		return;
 	}
 
-	void printRoute()
+	static void printRoute()
 	{
 		cout << "-----------------------------------------------------------" << endl;
 		for (int i = 0; i < routeList->getLen(); i++)
 		{
 
-			cout <<"( " << routeList->get(i)->getPosx()<< " , "<< routeList->get(i)->getPosx()<<" ) " << " ->";
+			cout <<"( " << routeList->get(i)->getPosx()<< " , "<< routeList->get(i)->getPosy()<<" ) " << " ->";
 
 		}
 	}
-
+	
 
 };

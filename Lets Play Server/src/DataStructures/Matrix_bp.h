@@ -8,8 +8,6 @@
 
 using namespace std;
 
-
-
 class Matrix_bp
 { 
 public:
@@ -29,11 +27,7 @@ public:
 		{
 			newListRow = createBlankRow(lenghtColumn);
 			bpMatrix->append(newListRow);
-
 		}
-		
-		
-
 	}
 	SimplyLinkedList<bp_Box*>* createBlankRow(int lenght) {
 		auto rowList = new SimplyLinkedList<bp_Box*>();
@@ -141,10 +135,16 @@ public:
 				bpMatrix->get(i)->get(j)->setPosy(j);
 				bpMatrix->get(i)->get(j)->setParentx(-1);
 				bpMatrix->get(i)->get(j)->setParenty(-1);
+				bpMatrix->get(i)->get(j)->setValue(0);
 				cont++;
 				
 			}
 		}
+	}
+
+	SimplyLinkedList<SimplyLinkedList<bp_Box*>*>* getMatrix_list() {
+
+		return bpMatrix;
 	}
 
 	
