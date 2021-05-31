@@ -98,8 +98,8 @@ void Server::initServer()
 
 		client_message = string(buf, 0, bytesReceived);
 		if (!client_message.empty()) {
-			const string& response = Server_Manager::Select_GameController(client_message);
-			Send(response.c_str());
+			//const string& response = Server_Manager::Select_GameController(client_message);
+			//Send(response.c_str());
 
 		}
 

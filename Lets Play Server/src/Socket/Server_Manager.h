@@ -10,13 +10,13 @@ class Server_Manager
 {
 
 public:
-	static string Select_GameController(const string& jsonString) {
+	static void Select_GameController(const string& jsonString) {
 
-		string game = JSON_Management::GetJSONString("game", jsonString);
-		string players = JSON_Management::GetJSONString("totalplayers", jsonString);
-		string currentplayer = JSON_Management::GetJSONString("player", jsonString);
-		int currentx = atoi(JSON_Management::GetJSONString("currentx", jsonString).c_str());
-		int currenty = atoi(JSON_Management::GetJSONString("currenty", jsonString).c_str());
+		string game = JSON_Management::GetJSONString("Game", jsonString);
+		string players = JSON_Management::GetJSONString("Totalplayers", jsonString);
+		string currentplayer = JSON_Management::GetJSONString("Player", jsonString);
+		int currentx = atoi(JSON_Management::GetJSONString("Currentposx", jsonString).c_str());
+		int currenty = atoi(JSON_Management::GetJSONString("Currentposy", jsonString).c_str());
 		auto currentpos = new bp_Box();
 		auto goal = new bp_Box();
 		currentpos->setPosx(currentx);
@@ -41,17 +41,15 @@ public:
 				if (currentplayer == "1") {
 					goal->setPosx(5);
 					goal->setPosy(15);
-
-
-
 					aStar::aStarSearch(currentpos,goal,currentplayer);
+					aStar::printRoute();
 					
 				}
 				else {
 					goal->setPosx(5);
 					goal->setPosy(0);
 					aStar::aStarSearch(currentpos, goal, currentplayer);
-					
+					aStar::printRoute();
 				}
 			}
 
@@ -62,9 +60,8 @@ public:
 			// Llamar a funcion controladora del gp_puzzle 
 
 		}
-
+		
 	}
-
 
 };
 

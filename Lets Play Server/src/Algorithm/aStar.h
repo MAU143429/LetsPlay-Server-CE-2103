@@ -4,24 +4,25 @@
 #include "../BPGAME/BP_Controller.h"
 #include "../DataStructures/bp_Box.h"
 #include "../DataStructures/SimplyList.h"
+#include "../DataStructures/Matrix_bp.h"
 #include <stack>
 
-#define ROW 15 
-#define COL 10 
+#define ROW 11 
+#define COL 16 
 
 using namespace std;
 
-SimplyLinkedList<bp_Box*> *routeList = new SimplyLinkedList<bp_Box*>();
-
+static SimplyLinkedList<bp_Box*>* routeList = new SimplyLinkedList<bp_Box*>();
 
 class aStar
 {
 
 public: 
-
 	typedef pair<int, int> Pair;
 	typedef pair<double, pair<int, int>> pPair;
+	
 
+	
 	struct cell
 	{
 		int parent_i, parent_j;
@@ -37,11 +38,13 @@ public:
 	
 	static bool isUnBlocked(int row, int col)
 	{
-		// LLAMAR AL BP_MATRIX (SINGLETON)
+		
 		if (BP_Controller::getInstance()->getMatrix()->get(row)->get(col)->getValue() == 0)
 			return (true);
 		else
 			return (false);
+	
+		
 	}
 
 	static bool isGoal(int row, int col)
@@ -77,35 +80,32 @@ public:
 			col = 0;
 		}
 
-		stack<bp_Box*> *Path;
+		stack<Pair> Path;
 
 		while (!(cellDetails[row][col].parent_i== row
 			&& cellDetails[row][col].parent_j == col))
 		{
-			auto newNode = new bp_Box();
-			newNode->setPosx(row);
-			newNode->setPosy(col);
-			Path->push(newNode);
+			Path.push(make_pair(row, col));
 			int temp_row = cellDetails[row][col].parent_i;
 			int temp_col = cellDetails[row][col].parent_j;
 			row = temp_row;
 			col = temp_col;
 		}
 
-		auto newNode1 = new bp_Box();
-		newNode1->setPosx(row);
-		newNode1->setPosy(col);
-		Path->push(newNode1);
+		Path.push(make_pair(row, col));
 
-		while (!Path->empty())
+		while (!Path.empty())
 		{
+
+			pair<int, int> p = Path.top();
+			Path.pop();
+
 			auto bp_pop = new bp_Box();
-			bp_pop = Path->top();
-
-			Path->pop();
-
+			bp_pop->setPosx(p.first);
+			bp_pop->setPosy(p.second);
 
 			routeList->append(bp_pop);
+			
 
 		}
 
@@ -483,16 +483,16 @@ public:
 		return;
 	}
 
-	void printRoute()
+	static void printRoute()
 	{
 		cout << "-----------------------------------------------------------" << endl;
 		for (int i = 0; i < routeList->getLen(); i++)
 		{
 
-			cout <<"( " << routeList->get(i)->getPosx()<< " , "<< routeList->get(i)->getPosx()<<" ) " << " ->";
+			cout <<"( " << routeList->get(i)->getPosx()<< " , "<< routeList->get(i)->getPosy()<<" ) " << " ->";
 
 		}
 	}
-
+	
 
 };

@@ -9,10 +9,18 @@ using namespace std;
 class TypeMessage
 {
 private:
-	string game, gamemode, player, totalPlayers, currentPosX, currentPosY, initMode;
+	string game, gamemode, player, totalPlayers, currentPosX, currentPosY, initMode,isAi;
 	SimplyLinkedList<Random_Box*> *playerList = new SimplyLinkedList<Random_Box*>();
 
 public:
+    const string& getAi() const {
+        return isAi;
+    }
+
+    void setAi(const string& ai) {
+        this->isAi = ai;
+    }
+
     const string& getGame() const {
         return game;
     }
