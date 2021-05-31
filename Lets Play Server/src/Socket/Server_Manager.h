@@ -10,7 +10,7 @@ class Server_Manager
 {
 
 public:
-	static void Select_GameController(const string& jsonString) {
+	static string Select_GameController(const string& jsonString) {
 
 		string game = JSON_Management::GetJSONString("Game", jsonString);
 		string players = JSON_Management::GetJSONString("Totalplayers", jsonString);
@@ -21,6 +21,8 @@ public:
 		auto goal = new bp_Box();
 		currentpos->setPosx(currentx);
 		currentpos->setPosy(currenty);
+		auto response = new TypeMessage();
+
 
 		// Crear la respuesta al client justo aca
 
@@ -52,7 +54,16 @@ public:
 					aStar::printRoute();
 				}
 			}
-
+			
+			response->setGame("GPGAME");
+			response->setCurrentposx("14");
+			response->setCurrentposy("7");
+			response->setGamemode("PvAi");
+			response->setInitmode("TRUE");
+			response->setPlayer("2");
+			response->setAi("FALSE");
+			
+			return JSON_Management::TypeMessageToJSON(response);
 			
 		}
 		else if (game == "GPUZZLE") {
