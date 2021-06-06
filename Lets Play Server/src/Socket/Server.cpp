@@ -1,4 +1,5 @@
 #include "Server.h"
+#include "Server_Manager.h"
 
 Server* Server::unique_instance{ nullptr };
 mutex Server::mutex_;
@@ -8,14 +9,19 @@ Server::Server()
 }
 
 Server::~Server(){}
-
+/**
+ * @brief Getter for the static instance of the server class 
+ * @return the static instance
+*/
 Server* Server::getInstance()
 {
 	lock_guard<std::mutex> lock(mutex_);
 	if (unique_instance == nullptr) { unique_instance = new Server(); }
 	return unique_instance;
 }
-
+/**
+ * @brief Method that initializes the server
+*/
 void Server::initServer()
 {
 	// Initialze winsock
@@ -42,7 +48,7 @@ void Server::initServer()
 	hint.sin_family = AF_INET;
 	hint.sin_port = htons(54000);
 	hint.sin_addr.S_un.S_addr = INADDR_ANY; // Could also use inet_pton .... 
-
+	
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
 
 	// Tell Winsock the socket is for listening 
@@ -52,7 +58,7 @@ void Server::initServer()
 	sockaddr_in client;
 	int clientSize = sizeof(client);
 
-	SOCKET clientSocket = accept(listening, (sockaddr*)&client, &clientSize);
+	clientSocket = accept(listening, (sockaddr*)&client, &clientSize);
 
 	char host[NI_MAXHOST];		// Client's remote name
 	char service[NI_MAXSERV];	// Service (i.e. port) the client is connect on
@@ -86,7 +92,6 @@ void Server::initServer()
 		if (bytesReceived == SOCKET_ERROR)
 		{
 			cerr << "Error in recv(). Quitting" << endl;
-			break;
 		}
 
 		if (bytesReceived == 0)
@@ -94,11 +99,20 @@ void Server::initServer()
 			cout << "Client disconnected " << endl;
 			break;
 		}
-
 		cout << string(buf, 0, bytesReceived) << endl;
 
 		// Echo message back to client
 		send(clientSocket, buf, bytesReceived + 1, 0);
+
+		/*
+		client_message = string(buf, 0, bytesReceived);
+		if (!client_message.empty()) {
+			cout << "ACABO DE RECIBIR UN SMS DEL CLIENT QUE DICE  " << client_message << endl;
+			const string& response = Server_Manager::Select_GameController(client_message);
+			Send(response.c_str());
+
+		}
+		*/
 
 	}
 
@@ -109,4 +123,20 @@ void Server::initServer()
 	WSACleanup();
 
 	system("pause");
+
+}
+	/**
+	 * @brief Sends a message to the client.
+	 * @param msg const char pointer containing the message.
+	 */
+void Server::Send(const char* msg) {
+	int sendRes = send(clientSocket, msg, strlen(msg), 0);
+	if (sendRes == -1) {
+		std::cout << "Send message failed" << std::endl;
+	}
+}
+
+string Server::ReadString()
+{
+	return client_message;
 }

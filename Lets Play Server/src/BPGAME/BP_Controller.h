@@ -3,16 +3,47 @@
 #include <iostream>
 #include "../Util_JSON/JSON_Management.h"
 #include "../DataStructures/Matrix_bp.h"
+#include <mutex>
 
 using namespace std;
 
-static Matrix_bp* bp_matrix;
+
 class BP_Controller
 {
 
+protected:
+	BP_Controller();
+	~BP_Controller();
+private:
+	static BP_Controller* unique_instance;
+	static mutex mutex_;
+
 public:
 
-	static SimplyLinkedList<Random_Box*>* generate_Random(int players) {
+	int rows = 11;
+	int column = 16;
+	Matrix_bp* bp_matrix = new Matrix_bp(rows, column);;
+	
+
+	static BP_Controller* getInstance();
+
+	/**
+	 * @brief Method that doesn't let the server instance be cloneable.
+	 */
+	void operator=(const BP_Controller&) = delete;
+
+	/**
+	 * @brief Method that doesn't let the server be assignable.
+	 * @param other
+	 */
+	BP_Controller(BP_Controller& other) = delete;
+
+    /**
+     * @brief Generates a list that contains Random_Box.h objects in random positions
+     * @param players the amount of players used for assigning the random positions
+     * @return the player_positions list
+    */
+    SimplyLinkedList<Random_Box*>* generate_Random(int players) {
 
 		int half = players / 2;
 		int totalleft = 0;
@@ -80,17 +111,34 @@ public:
 		return player_positions;
 	}
 
-	static int random_row(int min,int max) {
+	/**
+	 * @brief Creates a random integer in a specified range used for rows
+	 * @param min the mininimun value for the random positions
+	 * @param max the maximun value for the random positions
+	 * @return the random integer
+	*/
+	int random_row(int min,int max) {
 		int randrow1 = rand() % (max - min + 1) + min;
 		return randrow1;
 
 	}
-	static int random_col(int min, int max) {
+
+	/**
+	 * @brief Creates a random integer in a specified range used for cols
+	 * @param min the mininimun value for the random positions
+	 * @param max the maximun value for the random positions
+	 * @return the random integer
+	*/
+	int random_col(int min, int max) {
 		int randcol1 = rand() % (max - min + 1) + min;
 		return randcol1;
 	}
 
-	static void Pin_up(SimplyLinkedList<Random_Box*>* p_locations) {
+	/**
+	 * @brief Grabs the player list with random positions and adds it to the logical matrix
+	 * @param p_locations the simply linked list of the players
+	*/
+	void Pin_up(SimplyLinkedList<Random_Box*>* p_locations) {
 		
 		for (int i = 0; i < p_locations->getLen(); i++)
 		{
@@ -101,17 +149,30 @@ public:
 		}
 
 	}
+
+	/**
+	 * @brief Getter for the matrix linked list
+	 * @return the linked list
+	*/
+	SimplyLinkedList<SimplyLinkedList<bp_Box*>*> *getMatrix() {
+
+		return bp_matrix->getMatrix_list();
+	}
 	
-	static void Init_BP(const char *totalplayers) {
+	/**
+	 * @brief Initializes the matrix 
+	 * @param totalplayers the amount of players 
+	 * @return the simply linked list matrix
+	*/
+	SimplyLinkedList<Random_Box*>* Init_BP(const char *totalplayers) {
 		int total_players = atoi(totalplayers);
-		static int rows = 11;
-		static int column = 16;
-		bp_matrix = new Matrix_bp(rows, column);
 		bp_matrix->printMatrix();
 		bp_matrix->fill_Matrix();
 		SimplyLinkedList<Random_Box*>* newplayers_location = generate_Random(total_players);
 		Pin_up(newplayers_location);
 		bp_matrix->printMatrix();
+		bp_matrix->printMatrixName();
+		return newplayers_location;
 
 	}
 

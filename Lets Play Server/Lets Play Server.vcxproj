@@ -155,16 +155,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\DataStructures\Random_Box.cpp" />
-    <ClCompile Include="src\DataStructures\bp_Box.cpp" />
     <ClCompile Include="src\BPGAME\BP_Controller.cpp" />
     <ClCompile Include="src\GPPUZZLE\gpuzzle_server.cpp" />
-    <ClCompile Include="src\Socket\Server_Manager.cpp" />
     <ClCompile Include="src\Socket\Server.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Util_JSON\TypeMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Algorithm\aStar.h" />
     <ClInclude Include="src\DataStructures\Random_Box.h" />
     <ClInclude Include="src\DataStructures\bp_Box.h" />
     <ClInclude Include="src\BPGAME\BP_Controller.h" />

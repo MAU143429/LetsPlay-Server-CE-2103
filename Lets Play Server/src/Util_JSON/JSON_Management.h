@@ -70,6 +70,8 @@ public:
         writer.String(typemessageObject->getCurrentposy().c_str());
         writer.Key("Initmode");
         writer.String(typemessageObject->getInitmode().c_str());
+        writer.Key("isAi");
+        writer.String(typemessageObject->getInitmode().c_str());
         
 
         writer.Key("Playerlist");

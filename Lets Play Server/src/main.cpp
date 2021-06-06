@@ -5,11 +5,21 @@
 #include "DataStructures/SimplyList.h"
 #include "DataStructures/Random_Box.h"
 #include "Util_JSON/TypeMessage.h"
+#include "Socket/Server_Manager.h" 
 using namespace std;
 
+void RunServer() {
+	cout << "Server is running" << endl;
+	Server::getInstance()->initServer();
+}
+
+
+
 int main() {
-	//Server::getInstance()->initServer();
-	BP_Controller::Init_BP("12");
+
+	thread runs(RunServer);
+	runs.join();
+	
 	return 0;
 }
 

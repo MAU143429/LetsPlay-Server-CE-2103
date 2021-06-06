@@ -17,6 +17,8 @@ private:
     static Server* unique_instance;
     static mutex mutex_;
 public:
+    SOCKET clientSocket;
+    string client_message;
     static Server* getInstance();
     /**
      * @brief Method that doesn't let the server instance be cloneable.
@@ -29,5 +31,7 @@ public:
      */
     Server(Server& other) = delete;
     void initServer();
+    void Send(const char *msg);
+    string ReadString();
 
 };
