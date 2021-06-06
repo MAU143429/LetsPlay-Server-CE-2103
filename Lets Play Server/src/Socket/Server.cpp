@@ -43,7 +43,7 @@ void Server::initServer()
 	hint.sin_family = AF_INET;
 	hint.sin_port = htons(54000);
 	hint.sin_addr.S_un.S_addr = INADDR_ANY; // Could also use inet_pton .... 
-
+	
 	bind(listening, (sockaddr*)&hint, sizeof(hint));
 
 	// Tell Winsock the socket is for listening 
@@ -102,7 +102,10 @@ void Server::initServer()
 		/*
 		client_message = string(buf, 0, bytesReceived);
 		if (!client_message.empty()) {
-			const string& response = Server_Manager::Select_GameController(client_message);
+			cout << "ACABO DE RECIBIR UN SMS DEL CLIENT QUE DICE  " << client_message << endl;
+			//const string& response = Server_Manager::Select_GameController(client_message);
+			const string& response = "SOY LA RESPUESTA";
+			cout << "YA VOY A ENVIAR EL RESPONSE";
 			Send(response.c_str());
 
 		}
