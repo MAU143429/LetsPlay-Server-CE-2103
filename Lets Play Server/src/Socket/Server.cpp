@@ -87,7 +87,6 @@ void Server::initServer()
 		if (bytesReceived == SOCKET_ERROR)
 		{
 			cerr << "Error in recv(). Quitting" << endl;
-			break;
 		}
 
 		if (bytesReceived == 0)
@@ -95,13 +94,19 @@ void Server::initServer()
 			cout << "Client disconnected " << endl;
 			break;
 		}
+		cout << string(buf, 0, bytesReceived) << endl;
 
+		// Echo message back to client
+		send(clientSocket, buf, bytesReceived + 1, 0);
+
+		/*
 		client_message = string(buf, 0, bytesReceived);
 		if (!client_message.empty()) {
 			const string& response = Server_Manager::Select_GameController(client_message);
 			Send(response.c_str());
 
 		}
+		*/
 
 	}
 

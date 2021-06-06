@@ -23,9 +23,9 @@ void mainv2() {
 int main() {
 
 	thread runs(RunServer);
-	thread runs2(mainv2);
+	//thread runs2(mainv2);
 	runs.join();
-	runs2.join();
+	//runs2.join();
 
 
 
