@@ -30,9 +30,19 @@ public:
 
 			if (JSON_Management::GetJSONString("Initmode", jsonString) == "TRUE"){
 
-				BP_Controller::getInstance()->Init_BP(players.c_str());
 				
-				
+
+				SimplyLinkedList<Random_Box*> * final_players = BP_Controller::getInstance()->Init_BP(players.c_str());
+				response->setGame("BPGAME");
+				response->setInitmode("TRUE");
+
+				for (int i = 0; i < final_players->getLen(); i++)
+				{
+					response->getPlayerlist()->append(final_players->get(i));
+				}
+
+				string result = JSON_Management::TypeMessageToJSON(response);
+				return result;
 			}
 			else if(JSON_Management::GetJSONString("isAi", jsonString) == "TRUE"){
 

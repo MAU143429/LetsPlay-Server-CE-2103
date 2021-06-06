@@ -14,21 +14,12 @@ void RunServer() {
 }
 
 
-void mainv2() {
-	string player = "14";
-	BP_Controller::getInstance()->Init_BP(player.c_str());
-	
-}
 
 int main() {
 
 	thread runs(RunServer);
-	thread runs2(mainv2);
 	runs.join();
-	runs2.join();
-
-
-
+	
 	return 0;
 }
 
