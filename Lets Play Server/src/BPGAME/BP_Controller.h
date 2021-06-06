@@ -134,7 +134,7 @@ public:
 		return bp_matrix->getMatrix_list();
 	}
 	
-	void Init_BP(const char *totalplayers) {
+	SimplyLinkedList<Random_Box*>* Init_BP(const char *totalplayers) {
 		int total_players = atoi(totalplayers);
 		bp_matrix->printMatrix();
 		bp_matrix->fill_Matrix();
@@ -142,6 +142,7 @@ public:
 		Pin_up(newplayers_location);
 		bp_matrix->printMatrix();
 		bp_matrix->printMatrixName();
+		return newplayers_location;
 
 	}
 
