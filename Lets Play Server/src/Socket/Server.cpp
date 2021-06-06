@@ -9,14 +9,19 @@ Server::Server()
 }
 
 Server::~Server(){}
-
+/**
+ * @brief Getter for the static instance of the server class 
+ * @return the static instance
+*/
 Server* Server::getInstance()
 {
 	lock_guard<std::mutex> lock(mutex_);
 	if (unique_instance == nullptr) { unique_instance = new Server(); }
 	return unique_instance;
 }
-
+/**
+ * @brief Method that initializes the server
+*/
 void Server::initServer()
 {
 	// Initialze winsock
@@ -87,7 +92,6 @@ void Server::initServer()
 		if (bytesReceived == SOCKET_ERROR)
 		{
 			cerr << "Error in recv(). Quitting" << endl;
-			break;
 		}
 
 		if (bytesReceived == 0)
@@ -95,7 +99,12 @@ void Server::initServer()
 			cout << "Client disconnected " << endl;
 			break;
 		}
+		cout << string(buf, 0, bytesReceived) << endl;
 
+		// Echo message back to client
+		send(clientSocket, buf, bytesReceived + 1, 0);
+
+		/*
 		client_message = string(buf, 0, bytesReceived);
 		if (!client_message.empty()) {
 			cout << "ACABO DE RECIBIR UN SMS DEL CLIENT QUE DICE  " << client_message << endl;
@@ -103,6 +112,7 @@ void Server::initServer()
 			Send(response.c_str());
 
 		}
+		*/
 
 	}
 

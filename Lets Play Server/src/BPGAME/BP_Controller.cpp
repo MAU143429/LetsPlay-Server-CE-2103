@@ -8,6 +8,10 @@ BP_Controller::BP_Controller()
 
 BP_Controller::~BP_Controller() {}
 
+/**
+ * @brief Getter for the static class instance
+ * @return the static instance
+*/
 BP_Controller* BP_Controller::getInstance()
 {
 	lock_guard<std::mutex> lock(mutex_);
