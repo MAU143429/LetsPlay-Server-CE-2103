@@ -9,14 +9,19 @@ Server::Server()
 }
 
 Server::~Server(){}
-
+/**
+ * @brief Getter for the static instance of the server class 
+ * @return the static instance
+*/
 Server* Server::getInstance()
 {
 	lock_guard<std::mutex> lock(mutex_);
 	if (unique_instance == nullptr) { unique_instance = new Server(); }
 	return unique_instance;
 }
-
+/**
+ * @brief Method that initializes the server
+*/
 void Server::initServer()
 {
 	// Initialze winsock

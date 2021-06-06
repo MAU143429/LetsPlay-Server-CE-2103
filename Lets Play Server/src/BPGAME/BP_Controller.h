@@ -38,7 +38,11 @@ public:
 	 */
 	BP_Controller(BP_Controller& other) = delete;
 
-
+    /**
+     * @brief Generates a list that contains Random_Box.h objects in random positions
+     * @param players the amount of players used for assigning the random positions
+     * @return the player_positions list
+    */
     SimplyLinkedList<Random_Box*>* generate_Random(int players) {
 
 		int half = players / 2;
@@ -107,16 +111,33 @@ public:
 		return player_positions;
 	}
 
+	/**
+	 * @brief Creates a random integer in a specified range used for rows
+	 * @param min the mininimun value for the random positions
+	 * @param max the maximun value for the random positions
+	 * @return the random integer
+	*/
 	int random_row(int min,int max) {
 		int randrow1 = rand() % (max - min + 1) + min;
 		return randrow1;
 
 	}
+
+	/**
+	 * @brief Creates a random integer in a specified range used for cols
+	 * @param min the mininimun value for the random positions
+	 * @param max the maximun value for the random positions
+	 * @return the random integer
+	*/
 	int random_col(int min, int max) {
 		int randcol1 = rand() % (max - min + 1) + min;
 		return randcol1;
 	}
 
+	/**
+	 * @brief Grabs the player list with random positions and adds it to the logical matrix
+	 * @param p_locations the simply linked list of the players
+	*/
 	void Pin_up(SimplyLinkedList<Random_Box*>* p_locations) {
 		
 		for (int i = 0; i < p_locations->getLen(); i++)
@@ -129,11 +150,20 @@ public:
 
 	}
 
+	/**
+	 * @brief Getter for the matrix linked list
+	 * @return the linked list
+	*/
 	SimplyLinkedList<SimplyLinkedList<bp_Box*>*> *getMatrix() {
 
 		return bp_matrix->getMatrix_list();
 	}
 	
+	/**
+	 * @brief Initializes the matrix 
+	 * @param totalplayers the amount of players 
+	 * @return the simply linked list matrix
+	*/
 	SimplyLinkedList<Random_Box*>* Init_BP(const char *totalplayers) {
 		int total_players = atoi(totalplayers);
 		bp_matrix->printMatrix();

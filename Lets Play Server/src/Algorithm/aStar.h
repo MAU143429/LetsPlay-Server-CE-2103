@@ -22,20 +22,33 @@ public:
 	typedef pair<double, pair<int, int>> pPair;
 	
 
-	
+	/**
+	 * @brief A structure to hold the neccesary parameters
+	*/
 	struct cell
 	{
 		int parent_i, parent_j;
 		double f, g, h;
 	};
 
-	
+	/**
+	 * @brief A Utility Function to check whether given cell (row, col) is a valid cell or not.
+	 * @param row the position of the row
+	 * @param col the position of the column
+	 * @return true if the row and column inserted as parameters is contained in the lenght of the rows and columns of the matrix
+	*/
 	static bool isValid(int row, int col)
 	{
 		return (row >= 0) && (row < ROW) &&
 			(col >= 0) && (col < COL);
 	}
 	
+	/**
+	 * @brief A Utility Function to check whether the given cell is blocked or not  
+	 * @param row the position of the row 
+	 * @param col the position of the column
+	 * @return true if its unblucked false if its blocked
+	*/
 	static bool isUnBlocked(int row, int col)
 	{
 		
@@ -47,6 +60,12 @@ public:
 		
 	}
 
+	/**
+	 * @brief A Utility Function to check whether destination cell has been reached or not 
+	 * @param row the position of the row 
+	 * @param col the position of the column 
+	 * @return true if its contained in the goal position, false if its not
+	*/
 	static bool isGoal(int row, int col)
 	{
 		if (row == 5 && col == 0 || row == 5 && col == 15)
@@ -55,7 +74,13 @@ public:
 			return (false);
 	}
 
-	
+	/**
+	 * @brief A Utility Function to calculate the 'h' heuristics.
+	 * @param row the position of the row 
+	 * @param col the position of the column 
+	 * @param currentplayer the currentplayer to locate in which sided its on
+	 * @return the H value
+	*/
 	static double calc_Hvalue(int row,int col, string currentplayer)
 	{
 		if (currentplayer == "1") {
@@ -67,6 +92,11 @@ public:
 		
 	}
 
+	/**
+	 * @brief A Utility Function to trace the path from the source to destination 
+	 * @param cellDetails the cell matrix
+	 * @param currentplayer the current player 
+	*/
 	static void tracePath(cell cellDetails[][COL], string currentplayer) {
 
 		int row, col;
@@ -112,7 +142,12 @@ public:
 		return;
 
 	}
-	
+	/**
+	 * @brief A Function to find the shortest path between a given source cell to a destination cell according to A* Search Algorithm 
+	 * @param currentcell the location of the current bp_Box cell
+	 * @param goal the goal destination
+	 * @param currplayers the current players 
+	*/
 	static void aStarSearch(bp_Box *currentcell, bp_Box *goal, string currplayers ) {
 
 		// If the cell is out of range 
@@ -483,6 +518,9 @@ public:
 		return;
 	}
 
+	/**
+	 * @brief Prints the calculated route according to the algorithm
+	*/
 	static void printRoute()
 	{
 		cout << "-----------------------------------------------------------" << endl;
