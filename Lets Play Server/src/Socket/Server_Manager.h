@@ -10,6 +10,11 @@ class Server_Manager
 {
 
 public:
+	/**
+	 * @brief Method that selects the game using the key in the json string
+	 * @param jsonString the string json used for analyzing the keys
+	 * @return the typemessage.h object serialized into json string
+	*/
 	static string Select_GameController(const string& jsonString) {
 
 		string game = JSON_Management::GetJSONString("Game", jsonString);
