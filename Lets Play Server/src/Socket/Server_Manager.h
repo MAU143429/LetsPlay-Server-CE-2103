@@ -73,8 +73,7 @@ public:
 					response->setInitmode("FALSE");
 
 					string result = JSON_Management::TypeMessageToJSON(response);
-					
-					response->Restart_List();
+					aStar::getRouteList()->Clear();
 					return result;
 
 				
@@ -91,8 +90,8 @@ public:
 					}
 					response->setGame("BPGAME");
 					response->setInitmode("FALSE");
+					aStar::getRouteList()->Clear();
 					string result = JSON_Management::TypeMessageToJSON(response);
-					response->Restart_List();
 					return result;
 				}
 			}
