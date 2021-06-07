@@ -19,7 +19,7 @@ int main() {
 
 	thread runs(RunServer);
 	runs.join();
-	
+
 	return 0;
 }
 

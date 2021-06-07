@@ -3,6 +3,7 @@
 #include <string>
 #include "../DataStructures/SimplyList.h"
 #include "../DataStructures/Random_Box.h"
+#include "../DataStructures/bp_Box.h"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ class TypeMessage
 private:
 	string game, gamemode, player, totalPlayers, currentPosX, currentPosY, initMode,isAi;
 	SimplyLinkedList<Random_Box*> *playerList = new SimplyLinkedList<Random_Box*>();
+    SimplyLinkedList<Random_Box*> *aStarList = new SimplyLinkedList<Random_Box*>();
 
 public:
     const string& getAi() const {
@@ -80,6 +82,10 @@ public:
 
     SimplyLinkedList<Random_Box*> *getPlayerlist() {
         return playerList;
+    }
+
+    SimplyLinkedList<Random_Box*>* getAStarList() {
+        return aStarList;
     }
 };
 

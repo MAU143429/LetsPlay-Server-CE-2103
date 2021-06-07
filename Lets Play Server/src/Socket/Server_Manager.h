@@ -60,13 +60,29 @@ public:
 					goal->setPosy(15);
 					aStar::aStarSearch(currentpos,goal,currentplayer);
 					aStar::printRoute();
-					
+					auto aStarList = aStar::getRouteList();
+					for (int i = 0; i < aStarList->getLen(); i++)
+					{
+						response->getAStarList()->append(aStarList->get(i));
+					}
+
+					string result = JSON_Management::TypeMessageToJSON(response);
+					return result;
+				
 				}
 				else {
 					goal->setPosx(5);
 					goal->setPosy(0);
 					aStar::aStarSearch(currentpos, goal, currentplayer);
 					aStar::printRoute();
+					auto aStarList = aStar::getRouteList();
+					for (int i = 0; i < aStarList->getLen(); i++)
+					{
+						response->getAStarList()->append(aStarList->get(i));
+					}
+
+					string result = JSON_Management::TypeMessageToJSON(response);
+					return result;
 				}
 			}
 			
