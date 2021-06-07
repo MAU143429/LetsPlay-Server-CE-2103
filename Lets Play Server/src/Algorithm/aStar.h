@@ -7,8 +7,8 @@
 #include "../DataStructures/Matrix_bp.h"
 #include <stack>
 
-#define ROW 11 
-#define COL 16 
+#define ROW 12 
+#define COL 17 
 
 using namespace std;
 
@@ -68,7 +68,7 @@ public:
 	*/
 	static bool isGoal(int row, int col)
 	{
-		if (row == 5 && col == 0 || row == 5 && col == 15)
+		if (row == 5 && col == 0 || row == 5 && col == 16)
 			return (true);
 		else
 			return (false);
@@ -84,7 +84,7 @@ public:
 	static double calc_Hvalue(int row,int col, string currentplayer)
 	{
 		if (currentplayer == "1") {
-			return (double)abs(row - 5) + abs(15 - col);
+			return (double)abs(row - 5) + abs(16 - col);
 		}
 		else {
 			return (double)abs(row - 5) + abs(0 - col);
@@ -103,7 +103,7 @@ public:
 
 		if (currentplayer == "1") {
 			row = 5;
-			col = 15;
+			col = 16;
 		}
 		else {
 			row = 5;

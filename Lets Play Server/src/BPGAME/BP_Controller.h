@@ -20,8 +20,8 @@ private:
 
 public:
 
-	int rows = 11;
-	int column = 16;
+	int rows = 12;
+	int column = 17;
 	Matrix_bp* bp_matrix = new Matrix_bp(rows, column);;
 	
 
@@ -56,8 +56,8 @@ public:
 		{
 			exist = false;
 			auto pos = new Random_Box();
-			pos->setPosx(random_row(0,10));
-			pos->setPosy(random_col(0,7));
+			pos->setPosx(random_row(0,11));
+			pos->setPosy(random_col(0,8));
 
 			if (player_positions->getLen() != 0) {
 				for (int i = 0; i < player_positions->getLen(); i++)
@@ -84,8 +84,8 @@ public:
 		{
 			exist2 = false;
 			auto pos1 = new Random_Box();
-			pos1->setPosx(random_row(0, 10));
-			pos1->setPosy(random_col(8,15));
+			pos1->setPosx(random_row(0, 11));
+			pos1->setPosy(random_col(9,16));
 
 			if (player_positions->getLen() != 0) {
 				for (int i = 0; i < player_positions->getLen(); i++)
