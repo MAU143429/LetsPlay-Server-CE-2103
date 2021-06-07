@@ -6,18 +6,19 @@
 #include "../DataStructures/bp_Box.h"
 
 using namespace std;
-
+static SimplyLinkedList<Random_Box*>* Empty_List = new SimplyLinkedList<Random_Box*>();
 class TypeMessage
 {
 private:
 	string game, gamemode, player, totalPlayers, currentPosX, currentPosY, initMode,isAi;
 	SimplyLinkedList<Random_Box*> *playerList = new SimplyLinkedList<Random_Box*>();
     SimplyLinkedList<Random_Box*> *aStarList = new SimplyLinkedList<Random_Box*>();
+    
 
 public:
     const string& getAi() const {
         return isAi;
-    }
+    }   
 
     void setAi(const string& ai) {
         this->isAi = ai;
@@ -87,5 +88,11 @@ public:
     SimplyLinkedList<Random_Box*>* getAStarList() {
         return aStarList;
     }
+
+    void Restart_List() {
+
+        aStarList = Empty_List;
+    }
+
 };
 
