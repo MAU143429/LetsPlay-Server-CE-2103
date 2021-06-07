@@ -57,7 +57,7 @@ public:
 			else { // Es un player
 				if (currentplayer == "1") {
 					goal->setPosx(5);
-					goal->setPosy(15);
+					goal->setPosy(16);
 					aStar::aStarSearch(currentpos,goal,currentplayer);
 					aStar::printRoute();
 					
