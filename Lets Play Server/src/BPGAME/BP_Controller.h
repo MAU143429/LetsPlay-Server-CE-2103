@@ -48,6 +48,7 @@ public:
 		int half = players / 2;
 		int totalleft = 0;
 		int	totalright = 0;
+		
 		bool exist = false;
 		bool exist2 = false;
 		SimplyLinkedList<Random_Box*>* player_positions = new SimplyLinkedList<Random_Box*>;
