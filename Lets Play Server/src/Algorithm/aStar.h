@@ -7,12 +7,13 @@
 #include "../DataStructures/Matrix_bp.h"
 #include <stack>
 
-#define ROW 11 
-#define COL 16 
+#define ROW 12 
+#define COL 17 
 
 using namespace std;
 
 static SimplyLinkedList<Random_Box*>* routeList = new SimplyLinkedList<Random_Box*>();
+static SimplyLinkedList<Random_Box*>* Empty_List1 = new SimplyLinkedList<Random_Box*>();
 
 class aStar
 {
@@ -68,7 +69,7 @@ public:
 	*/
 	static bool isGoal(int row, int col)
 	{
-		if (row == 5 && col == 0 || row == 5 && col == 15)
+		if (row == 5 && col == 0 || row == 5 && col == 16)
 			return (true);
 		else
 			return (false);
@@ -84,7 +85,7 @@ public:
 	static double calc_Hvalue(int row,int col, string currentplayer)
 	{
 		if (currentplayer == "1") {
-			return (double)abs(row - 5) + abs(15 - col);
+			return (double)abs(row - 5) + abs(16 - col);
 		}
 		else {
 			return (double)abs(row - 5) + abs(0 - col);
@@ -103,7 +104,7 @@ public:
 
 		if (currentplayer == "1") {
 			row = 5;
-			col = 15;
+			col = 16;
 		}
 		else {
 			row = 5;
@@ -149,6 +150,8 @@ public:
 	 * @param currplayers the current players 
 	*/
 	static void aStarSearch(bp_Box *currentcell, bp_Box *goal, string currplayers ) {
+
+		routeList = Empty_List1;
 
 		// If the cell is out of range 
 		if (isValid(currentcell->getPosx(), currentcell->getPosy()) == false)

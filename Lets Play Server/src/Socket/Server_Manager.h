@@ -6,10 +6,12 @@
 #include "../Algorithm/aStar.h"
 using namespace std;
 
+
 class Server_Manager
 {
 
 public:
+	
 	/**
 	 * @brief Method that selects the game using the key in the json string
 	 * @param jsonString the string json used for analyzing the keys
@@ -17,6 +19,7 @@ public:
 	*/
 	static string Select_GameController(const string& jsonString) {
 
+		
 		string game = JSON_Management::GetJSONString("Game", jsonString);
 		string players = JSON_Management::GetJSONString("Totalplayers", jsonString);
 		string currentplayer = JSON_Management::GetJSONString("Player", jsonString);
@@ -57,7 +60,7 @@ public:
 			else { // Es un player
 				if (currentplayer == "1") {
 					goal->setPosx(5);
-					goal->setPosy(15);
+					goal->setPosy(16);
 					aStar::aStarSearch(currentpos,goal,currentplayer);
 					aStar::printRoute();
 					auto aStarList = aStar::getRouteList();
@@ -66,8 +69,14 @@ public:
 						response->getAStarList()->append(aStarList->get(i));
 					}
 
+					response->setGame("BPGAME");
+					response->setInitmode("FALSE");
+
 					string result = JSON_Management::TypeMessageToJSON(response);
+					
+					response->Restart_List();
 					return result;
+
 				
 				}
 				else {
@@ -80,8 +89,10 @@ public:
 					{
 						response->getAStarList()->append(aStarList->get(i));
 					}
-
+					response->setGame("BPGAME");
+					response->setInitmode("FALSE");
 					string result = JSON_Management::TypeMessageToJSON(response);
+					response->Restart_List();
 					return result;
 				}
 			}
