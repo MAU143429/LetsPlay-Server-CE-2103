@@ -12,7 +12,7 @@
 
 using namespace std;
 
-static SimplyLinkedList<bp_Box*>* routeList = new SimplyLinkedList<bp_Box*>();
+static SimplyLinkedList<Random_Box*>* routeList = new SimplyLinkedList<Random_Box*>();
 
 class aStar
 {
@@ -130,7 +130,7 @@ public:
 			pair<int, int> p = Path.top();
 			Path.pop();
 
-			auto bp_pop = new bp_Box();
+			auto bp_pop = new Random_Box();
 			bp_pop->setPosx(p.first);
 			bp_pop->setPosy(p.second);
 
@@ -530,6 +530,10 @@ public:
 			cout <<"( " << routeList->get(i)->getPosx()<< " , "<< routeList->get(i)->getPosy()<<" ) " << " ->";
 
 		}
+	}
+
+	static SimplyLinkedList<Random_Box*>* getRouteList() {
+		return routeList;
 	}
 	
 

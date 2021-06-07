@@ -6,6 +6,7 @@
 #include "../../lib/rapidjson/document.h"
 #include "../DataStructures/SimplyList.h"
 #include "../DataStructures/Random_Box.h"
+#include "../DataStructures/bp_Box.h"
 #include "TypeMessage.h"
 #include <string>
 
@@ -48,6 +49,8 @@ public:
         StringBuffer stringbuffer;
         SimplyLinkedList<Random_Box*> *jsonPlayerList = typemessageObject->getPlayerlist();
         int list_lenght = typemessageObject->getPlayerlist()->getLen();
+        SimplyLinkedList<Random_Box*>* jsonAStarList = typemessageObject->getAStarList();
+        int astarLenght = typemessageObject->getAStarList()->getLen();
 
         json_document.SetArray();
         Document::AllocatorType& allocator = json_document.GetAllocator();
@@ -82,10 +85,21 @@ public:
             SerializeRandomBoxToJSON(&writer, object);
         }
         writer.EndArray();
+
+        writer.Key("AStarList");
+        writer.StartArray();
+        for (int i = 0; i < astarLenght; i++)
+        {
+            Random_Box* object = jsonAStarList->get(i);
+            SerializeRandomBoxToJSON(&writer, object);
+        }
+        writer.EndArray();
+
         writer.EndObject();
 
         return stringbuffer.GetString();
     }
+
     /*
     * @brief Method that serializes a singly list that contains Random_Box objects to a JSON array 
     * @param boxList the list that contains the Random_box objects
