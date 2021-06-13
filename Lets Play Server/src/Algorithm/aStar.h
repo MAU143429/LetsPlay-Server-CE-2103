@@ -13,7 +13,8 @@
 using namespace std;
 
 static SimplyLinkedList<Random_Box*>* routeList = new SimplyLinkedList<Random_Box*>();
-static SimplyLinkedList<Random_Box*>* Empty_List1 = new SimplyLinkedList<Random_Box*>();
+static SimplyLinkedList<Random_Box*>* empty_list = new SimplyLinkedList<Random_Box*>();
+
 
 class aStar
 {
@@ -135,6 +136,7 @@ public:
 			bp_pop->setPosx(p.first);
 			bp_pop->setPosy(p.second);
 
+			
 			routeList->append(bp_pop);
 			
 
@@ -150,8 +152,8 @@ public:
 	 * @param currplayers the current players 
 	*/
 	static void aStarSearch(bp_Box *currentcell, bp_Box *goal, string currplayers ) {
-
-		routeList = Empty_List1;
+		
+		routeList = empty_list;
 
 		// If the cell is out of range 
 		if (isValid(currentcell->getPosx(), currentcell->getPosy()) == false)

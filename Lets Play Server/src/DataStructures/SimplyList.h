@@ -149,6 +149,28 @@ public:
         this->del(this->head->getValue());
     }
 
+    void Clean_list() {
+        
+        for (int i = 0; i < (this->len); ++i) {
+            Node<T>* tmp = this->head;
+            if (this->len != 1) {
+
+                this->del(this->head);
+                tmp->next = this->head;
+                len--;
+            }
+        }
+        this->head = nullptr;
+        
+        
+    }
+  
+    void Clear() {
+        this->head = nullptr;
+        this->tail = nullptr;
+        len = 0;
+    }
+
     int getLen() {
         return this->len;
     }
