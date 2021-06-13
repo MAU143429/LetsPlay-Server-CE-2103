@@ -89,10 +89,5 @@ public:
         return aStarList;
     }
 
-    void Restart_List() {
-
-        aStarList = Empty_List;
-    }
-
 };
 
