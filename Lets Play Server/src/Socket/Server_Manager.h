@@ -54,7 +54,23 @@ public:
 			}
 			else if(JSON_Management::GetJSONString("isAi", jsonString) == "TRUE"){
 
-				// LLAMAR A BACKTRACKING PORQUE ES UN BOT
+				goal->setPosx(5);
+				goal->setPosy(0);
+				aStar::aStarSearch(currentpos, goal, currentplayer);
+				aStar::printRoute();
+				auto aStarList = aStar::getRouteList();
+				for (int i = 0; i < aStarList->getLen(); i++)
+				{
+					response->getAStarList()->append(aStarList->get(i));
+				}
+
+				response->setGame("BPGAME");
+				response->setInitmode("FALSE");
+				response->setAi("TRUE");
+
+				string result = JSON_Management::TypeMessageToJSON(response);
+				aStar::getRouteList()->Clear();
+				return result;
 
 			}
 			else { // Es un player

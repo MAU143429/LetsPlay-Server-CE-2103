@@ -4,6 +4,7 @@
 #include "../Util_JSON/JSON_Management.h"
 #include "../DataStructures/Matrix_bp.h"
 #include <mutex>
+#include <ctime>
 
 using namespace std;
 
@@ -119,8 +120,13 @@ public:
 	 * @return the random integer
 	*/
 	int random_row(int min,int max) {
-		int randrow1 = rand() % (max - min + 1) + min;
-		return randrow1;
+		static bool first = true;
+		if (first)
+		{
+			srand(time(NULL)); //seeding for the first time only!
+			first = false;
+		}
+		return min + rand() % ((max + 1) - min);
 
 	}
 
@@ -131,8 +137,13 @@ public:
 	 * @return the random integer
 	*/
 	int random_col(int min, int max) {
-		int randcol1 = rand() % (max - min + 1) + min;
-		return randcol1;
+		static bool first = true;
+		if (first)
+		{
+			srand(time(NULL)); //seeding for the first time only!
+			first = false;
+		}
+		return min + rand() % ((max + 1) - min);
 	}
 
 	/**
