@@ -123,7 +123,7 @@ public:
 		static bool first = true;
 		if (first)
 		{
-			srand(time(NULL)); //seeding for the first time only!
+			srand(time(NULL)); 
 			first = false;
 		}
 		return min + rand() % ((max + 1) - min);
@@ -140,7 +140,7 @@ public:
 		static bool first = true;
 		if (first)
 		{
-			srand(time(NULL)); //seeding for the first time only!
+			srand(time(NULL)); 
 			first = false;
 		}
 		return min + rand() % ((max + 1) - min);
